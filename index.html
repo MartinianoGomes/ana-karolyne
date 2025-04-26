@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Quer namorar comigo?</title>
+  <title>Ana Karolyne</title>
   <style>
     body {
       display: flex;
@@ -25,7 +25,7 @@
 
     .buttons {
       position: relative;
-      width: 300px;
+      width: 100%;
       height: 100px;
     }
 
@@ -35,14 +35,15 @@
       border: none;
       border-radius: 12px;
       cursor: pointer;
-      transition: 0.3s;
       position: absolute;
+      transition: 0.2s;
     }
 
     .yes {
       background-color: #e91e63;
       color: white;
-      left: 30px;
+      left: 50%;
+      transform: translateX(-100%);
       top: 30px;
     }
 
@@ -53,6 +54,9 @@
     .no {
       background-color: #f8bbd0;
       color: #880e4f;
+      left: 50%;
+      transform: translateX(10%);
+      top: 30px;
     }
 
     .no:hover {
@@ -97,13 +101,13 @@
   </style>
 </head>
 <body>
-  <h1>Quer namorar comigo? 💖</h1>
+  <h1>Karolyne, namora comigo? 💖</h1>
   <div class="buttons">
     <button class="yes" onclick="responder('Sim! 😍')">Sim</button>
     <button class="no" id="noBtn">Não</button>
   </div>
   <div id="resposta"></div>
-  <div id="mensagem">Você acabou de fazer alguém MUITO feliz! 💕<br>Agora somos oficialmente um casal mais fofo do universo! 🌍💑</div>
+  <div id="mensagem" style="text-align: center;">Você acabou de fazer alguém MUITO feliz! 💕<br>Agora somos oficialmente um casal mais fofo do universo! 🌍💑</div>
 
   <script>
     function responder(resposta) {
@@ -115,18 +119,6 @@
         }
       }
     }
-
-    const noBtn = document.getElementById('noBtn');
-    const buttonsContainer = document.querySelector('.buttons');
-
-    noBtn.addEventListener('mouseover', () => {
-      const containerWidth = buttonsContainer.offsetWidth;
-      const containerHeight = buttonsContainer.offsetHeight;
-      const newLeft = Math.random() * (containerWidth - noBtn.offsetWidth);
-      const newTop = Math.random() * (containerHeight - noBtn.offsetHeight);
-      noBtn.style.left = `${newLeft}px`;
-      noBtn.style.top = `${newTop}px`;
-    });
 
     function createHeart() {
       const heart = document.createElement('div');
@@ -140,6 +132,21 @@
         heart.remove();
       }, 3000);
     }
+
+    const noBtn = document.getElementById('noBtn');
+
+    function moveButtonRandomly() {
+      const padding = 20;
+      const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+      const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+      const newX = Math.random() * maxX;
+      const newY = Math.random() * maxY;
+      noBtn.style.left = `${newX}px`;
+      noBtn.style.top = `${newY}px`;
+      noBtn.style.transform = 'none';
+    }
+
+    noBtn.addEventListener('mouseover', moveButtonRandomly);
   </script>
 </body>
 </html>
