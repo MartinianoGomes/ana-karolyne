@@ -5,45 +5,19 @@
   <title>Ana Karolyne</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background: #fff0f5;
-      overflow: hidden;
-      padding: 1rem;
-    }
-
-    .container {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      text-align: center;
-      gap: 2rem;
-    }
-
-    .left {
-      flex: 1;
+      margin: 0;
+      background: #fff0f5;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
       position: relative;
-    }
-
-    .right {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    img {
-      max-width: 90%;
-      max-height: 80vh;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      padding: 1rem;
+      text-align: center;
     }
 
     h1 {
@@ -55,9 +29,8 @@
     .buttons {
       position: relative;
       width: 100%;
+      max-width: 500px;
       height: 100px;
-      max-width: 400px;
-      margin: 0 auto;
     }
 
     button {
@@ -100,13 +73,8 @@
       margin-top: 2rem;
       font-size: 1.2rem;
       color: #4a148c;
+      max-width: 90%;
     }
-
-    #titulo {
-  opacity: 0;
-  transition: opacity 2s ease-in;
-}
-
 
     #mensagem {
       margin-top: 1rem;
@@ -126,6 +94,11 @@
       z-index: 1;
     }
 
+    img {
+      width: 300px;
+      border-radius: 10px;
+    }
+
     @keyframes floatUp {
       0% {
         transform: translateY(0) scale(1);
@@ -137,18 +110,8 @@
       }
     }
 
-    /* Responsividade */
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column-reverse;
-        height: auto;
-      }
-
-      .left, .right {
-        flex: none;
-        width: 100%;
-      }
-
+    /* Responsividade para telas menores */
+    @media (max-width: 600px) {
       h1 {
         font-size: 1.8rem;
       }
@@ -158,22 +121,22 @@
         font-size: 0.95rem;
       }
 
-      #resposta, #mensagem {
+      .buttons {
+        height: 130px;
+      }
+
+      #resposta {
         font-size: 1rem;
       }
 
-      .buttons {
-        height: 120px;
-      }
-
-      img {
-        width: 200px;
+      #mensagem {
+        font-size: 1rem;
       }
     }
 
     @media (max-width: 400px) {
       h1 {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
       }
 
       img {
@@ -196,20 +159,14 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="left">
-        <h1 id="titulo">Karolyne, namora comigo? 💖</h1>
-      <div class="buttons">
-        <button class="yes" onclick="responder('Sim! 😍')">Sim</button>
-        <button class="no" id="noBtn">Não</button>
-      </div>
-      <div id="resposta"></div>
-      <div id="mensagem">Você acabou de fazer alguém MUITO feliz! 💕<br>Agora somos oficialmente um casal mais fofo do universo! 🌍💑</div>
-    </div>
-    <div class="right">
-      <img src="Karolyne.jpg" alt="Foto da Karolyne">
-    </div>
+  <img src="Karolyne.jpg" alt="">
+  <h1>Karolyne, namora comigo? 💖</h1>
+  <div class="buttons">
+    <button class="yes" onclick="responder('Sim! 😍')">Sim</button>
+    <button class="no" id="noBtn">Não</button>
   </div>
+  <div id="resposta"></div>
+  <div id="mensagem">Você acabou de fazer alguém MUITO feliz! 💕<br>Agora somos oficialmente um casal mais fofo do universo! 🌍💑</div>
 
   <script>
     function responder(resposta) {
@@ -248,16 +205,12 @@
       noBtn.style.transform = 'none';
     }
 
-    window.addEventListener('load', () => {
-  document.getElementById('titulo').style.opacity = 1;
-});
-
-
     noBtn.addEventListener('mouseover', moveButtonRandomly);
     noBtn.addEventListener('touchstart', function (e) {
-      e.preventDefault();
+      e.preventDefault(); // impede o clique
       moveButtonRandomly();
     });
+
     noBtn.addEventListener('click', function (e) {
       e.preventDefault();
       moveButtonRandomly();
