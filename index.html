@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <title>Ana Karolyne</title>
@@ -103,9 +104,9 @@
     }
 
     #titulo {
-  opacity: 0;
-  transition: opacity 2s ease-in;
-}
+      opacity: 0;
+      transition: opacity 2s ease-in;
+    }
 
 
     #mensagem {
@@ -131,6 +132,7 @@
         transform: translateY(0) scale(1);
         opacity: 1;
       }
+
       100% {
         transform: translateY(-200px) scale(1.5);
         opacity: 0;
@@ -144,7 +146,8 @@
         height: auto;
       }
 
-      .left, .right {
+      .left,
+      .right {
         flex: none;
         width: 100%;
       }
@@ -158,7 +161,8 @@
         font-size: 0.95rem;
       }
 
-      #resposta, #mensagem {
+      #resposta,
+      #mensagem {
         font-size: 1rem;
       }
 
@@ -195,16 +199,18 @@
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <div class="left">
-        <h1 id="titulo">Karolyne, namora comigo? 💖</h1>
+      <h1 id="titulo">Karolyne, namora comigo? 💖</h1>
       <div class="buttons">
         <button class="yes" onclick="responder('Sim! 😍')">Sim</button>
         <button class="no" id="noBtn">Não</button>
       </div>
       <div id="resposta"></div>
-      <div id="mensagem">Você acabou de fazer alguém MUITO feliz! 💕<br>Agora somos oficialmente um casal mais fofo do universo! 🌍💑</div>
+      <div id="mensagem">Você acabou de fazer alguém MUITO feliz! 💕<br>Agora somos oficialmente um casal mais fofo do
+        universo! 🌍💑</div>
     </div>
     <div class="right">
       <img src="Karolyne.jpg" alt="Foto da Karolyne">
@@ -249,8 +255,8 @@
     }
 
     window.addEventListener('load', () => {
-  document.getElementById('titulo').style.opacity = 1;
-});
+      document.getElementById('titulo').style.opacity = 1;
+    });
 
 
     noBtn.addEventListener('mouseover', moveButtonRandomly);
@@ -264,4 +270,5 @@
     });
   </script>
 </body>
+
 </html>
